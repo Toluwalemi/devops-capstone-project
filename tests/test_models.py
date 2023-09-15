@@ -3,8 +3,9 @@ Test cases for Account Model
 
 """
 import logging
-import unittest
 import os
+import unittest
+
 from service import app
 from service.models import Account, DataValidationError, db
 from tests.factories import AccountFactory

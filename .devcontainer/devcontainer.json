@@ -34,6 +34,6 @@
 	// "postCreateCommand": "sudo pip install -r requirements.txt",
     "features": {
 	    "docker-in-docker": "latest",
-	    "kubectl-helm-minikube": "latest" 
+	    "kubectl-helm-minikube": "latest"
 	}
 }

@@ -5,6 +5,7 @@ All of the models are stored in this module
 """
 import logging
 from datetime import date
+
 from flask_sqlalchemy import SQLAlchemy
 
 logger = logging.getLogger("flask.app")
@@ -79,7 +80,7 @@ class PersistentBase:
 ######################################################################
 #  A C C O U N T   M O D E L
 ######################################################################
-class Account(db.Model, PersistentBase):
+class Account(db.Model, PersistentBase):  # type:ignore
     """
     Class that represents an Account
     """
@@ -105,7 +106,7 @@ class Account(db.Model, PersistentBase):
             "email": self.email,
             "address": self.address,
             "phone_number": self.phone_number,
-            "date_joined": self.date_joined.isoformat()
+            "date_joined": self.date_joined.isoformat(),
         }
 
     def deserialize(self, data):
@@ -126,7 +127,9 @@ class Account(db.Model, PersistentBase):
             else:
                 self.date_joined = date.today()
         except KeyError as error:
-            raise DataValidationError("Invalid Account: missing " + error.args[0]) from error
+            raise DataValidationError(
+                "Invalid Account: missing " + error.args[0]
+            ) from error
         except TypeError as error:
             raise DataValidationError(
                 "Invalid Account: body of request contained "
