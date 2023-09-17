@@ -7,11 +7,12 @@ and SQL database
 import sys
 
 from flask import Flask
+from flask_cors import CORS
+from flask_talisman import Talisman
 
 from service import config
 from service.common import log_handlers
-from flask_talisman import Talisman
-from flask_cors import CORS
+
 # Create Flask application
 app = Flask(__name__)
 app.config.from_object(config)
